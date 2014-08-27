@@ -1,7 +1,9 @@
-package model;
+package model.dao.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -25,7 +27,7 @@ public class Tipousr implements Serializable {
 	private String tipo;
 
 	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="tipousr")
+	@OneToMany(mappedBy="tipousr",cascade=CascadeType.PERSIST)
 	private List<Usuario> usuarios;
 
 	public Tipousr() {

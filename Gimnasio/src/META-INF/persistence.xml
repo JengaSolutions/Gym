@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="Gimnasio" transaction-type="RESOURCE_LOCAL">
-		<class>model.Calculo</class>
-		<class>model.Meses</class>
-		<class>model.Registro</class>
-		<class>model.Tipousr</class>
-		<class>model.Usuario</class>
+		<class>model.dao.entities.Calculo</class>
+		<class>model.dao.entities.Meses</class>
+		<class>model.dao.entities.Registro</class>
+		<class>model.dao.entities.Tipousr</class>
+		<class>model.dao.entities.Usuario</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gym_db"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Gimnasio"/>
 			<property name="javax.persistence.jdbc.user" value="postgres"/>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-			<property name="javax.persistence.jdbc.password" value="admin"/>
+			<property name="javax.persistence.jdbc.password" value="root"/>
 		</properties>
 	</persistence-unit>
 </persistence>
