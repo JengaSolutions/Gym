@@ -1,5 +1,7 @@
 package model.dao.controller;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -45,6 +47,10 @@ public String getTipo() {
 
 public void setTipo(String tipo) {
 	this.tipo = tipo;
+}
+
+public List<Tipousr> getListTipos(){
+	return manager.findAllTipos();
 }
 
 //accion para invocar el manager y crear tipo

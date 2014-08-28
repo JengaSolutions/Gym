@@ -16,7 +16,7 @@ public class Calculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CALCULOS_IDCALCULO_GENERATOR", sequenceName="SEC_CALCULOS")
+	@SequenceGenerator(name="CALCULOS_IDCALCULO_GENERATOR", sequenceName="SEC_CALCULOS",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CALCULOS_IDCALCULO_GENERATOR")
 	@Column(name="id_calculo")
 	private Long idCalculo;

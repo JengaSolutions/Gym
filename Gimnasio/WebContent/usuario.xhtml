@@ -10,132 +10,55 @@
 <title>Horas Laboradas</title>
 </h:head>
 <body>
-<h:graphicImage  value="/resources/images/h1.png"></h:graphicImage>
 <h:form id="form">
-		<p:commandButton update="form" value="Atras"  icon="ui-icon-arrowreturnthick-1-w"  action="#{horaBean.irAtras}"></p:commandButton>
+		<p:commandButton update="form" value="Atras"  icon="ui-icon-arrowreturnthick-1-w"  ></p:commandButton>
 	</h:form>
 <hr/>
 	<h:form id="form1" style="width: 933px; ">
-		<p:panel  id="panel1"  header="Registro de Horas Laboradas">
-		<p:panelGrid columns="2" >
-			<h:outputText value="FECHA"/>
-			<p:calendar value="#{horaBean.fecha}" id="cal" showOn="button" />
-			<h:outputText value="TRABAJADOR"/>
-			<h:panelGroup>  
-					<p:selectOneMenu value="#{horaBean.idT}">
+		<p:panel id="panel1"  header="Registro de Tipos de Usuario">
+		<p:panelGrid columns="3" >
+			<h:outputText value="NICK*"/>
+			<p:inputText required="true" id="nick" value="#{usuarioBean.nick}" requiredMessage="Nick Requerido"></p:inputText>
+			<p:message for="nick"></p:message>
+			<h:outputText value="NOMBRES*"/>
+			<p:inputText required="true" id="nombres" value="#{usuarioBean.nombres}" requiredMessage="Nombres Requerido"></p:inputText>
+			<p:message for="nombres"></p:message>
+			<h:outputText value="CONTRASEÑA*"/>
+			<p:inputText required="true" id="pass" value="#{usuarioBean.pass}" requiredMessage="Contraseña Requerido"></p:inputText>
+			<p:message for="pass"></p:message>
+			<h:outputText value="ROL*"/>
+					<p:selectOneMenu required="true" id="rol"  value="#{usuarioBean.idUsr}"  requiredMessage="Rol Requerido">
 						<f:selectItem itemLabel="Seleccione...!!!!" itemValue="-1" />
-						<f:selectItems value="#{horaBean.listaTrabajadores}" />
+						<f:selectItems  value="#{usuarioBean.listaTipos}" />
 						<p:ajax
-							listener="#{horaBean.asignar()}">
+							listener="#{usuarioBean.asignar()}">
 						</p:ajax>
 					</p:selectOneMenu>
-			</h:panelGroup>
+			<p:message for="rol"></p:message>
+			<p:commandButton update="panel1 :form2:panel2" value="Insertar" icon="ui-icon-check" action="#{usuarioBean.CrearUsuarios}"></p:commandButton>
 		</p:panelGrid>
-		<hr />
-		<hr />
-		<hr />
-		<p:panelGrid columns="4" >
-			<h:outputText value="HORA INICIO"/>
-			<p:selectOneMenu value="#{horaBean.hi}">
-				<f:selectItem itemLabel="6:00" itemValue="6"/>
-				<f:selectItem itemLabel="7:00" itemValue="7"/>
-				<f:selectItem itemLabel="8:00" itemValue="8"/>
-				<f:selectItem itemLabel="9:00" itemValue="9"/>
-				<f:selectItem itemLabel="10:00" itemValue="10"/>
-				<f:selectItem itemLabel="11:00" itemValue="11"/>
-				<f:selectItem itemLabel="12:00" itemValue="12"/>
-				<f:selectItem itemLabel="13:00" itemValue="13"/>
-				<f:selectItem itemLabel="14:00" itemValue="14"/>
-				<f:selectItem itemLabel="15:00" itemValue="15"/>
-				<f:selectItem itemLabel="16:00" itemValue="16"/>
-				<f:selectItem itemLabel="17:00" itemValue="17"/>
-				<f:selectItem itemLabel="18:00" itemValue="18"/>
-			</p:selectOneMenu>
-			<h:outputText value="HORA DE ALMUERZO"/>
-			<p:selectOneMenu value="#{horaBean.hfa}">
-				<f:selectItem itemLabel="6:00" itemValue="6"/>
-				<f:selectItem itemLabel="7:00" itemValue="7"/>
-				<f:selectItem itemLabel="8:00" itemValue="8"/>
-				<f:selectItem itemLabel="9:00" itemValue="9"/>
-				<f:selectItem itemLabel="10:00" itemValue="10"/>
-				<f:selectItem itemLabel="11:00" itemValue="11"/>
-				<f:selectItem itemLabel="12:00" itemValue="12"/>
-				<f:selectItem itemLabel="13:00" itemValue="13"/>
-				<f:selectItem itemLabel="14:00" itemValue="14"/>
-				<f:selectItem itemLabel="15:00" itemValue="15"/>
-				<f:selectItem itemLabel="16:00" itemValue="16"/>
-				<f:selectItem itemLabel="17:00" itemValue="17"/>
-				<f:selectItem itemLabel="18:00" itemValue="18"/>
-			</p:selectOneMenu>
-			<h:outputText value="HORA DE REGRESO"/>
-			<p:selectOneMenu value="#{horaBean.hia}">
-				<f:selectItem itemLabel="6:00" itemValue="6"/>
-				<f:selectItem itemLabel="7:00" itemValue="7"/>
-				<f:selectItem itemLabel="8:00" itemValue="8"/>
-				<f:selectItem itemLabel="9:00" itemValue="9"/>
-				<f:selectItem itemLabel="10:00" itemValue="10"/>
-				<f:selectItem itemLabel="11:00" itemValue="11"/>
-				<f:selectItem itemLabel="12:00" itemValue="12"/>
-				<f:selectItem itemLabel="13:00" itemValue="13"/>
-				<f:selectItem itemLabel="14:00" itemValue="14"/>
-				<f:selectItem itemLabel="15:00" itemValue="15"/>
-				<f:selectItem itemLabel="16:00" itemValue="16"/>
-				<f:selectItem itemLabel="17:00" itemValue="17"/>
-				<f:selectItem itemLabel="18:00" itemValue="18"/>
-			</p:selectOneMenu>
-			<h:outputText value="HORA FIN"/>
-			<p:selectOneMenu value="#{horaBean.hf}">
-				<f:selectItem itemLabel="6:00" itemValue="6"/>
-				<f:selectItem itemLabel="7:00" itemValue="7"/>
-				<f:selectItem itemLabel="8:00" itemValue="8"/>
-				<f:selectItem itemLabel="9:00" itemValue="9"/>
-				<f:selectItem itemLabel="10:00" itemValue="10"/>
-				<f:selectItem itemLabel="11:00" itemValue="11"/>
-				<f:selectItem itemLabel="12:00" itemValue="12"/>
-				<f:selectItem itemLabel="13:00" itemValue="13"/>
-				<f:selectItem itemLabel="14:00" itemValue="14"/>
-				<f:selectItem itemLabel="15:00" itemValue="15"/>
-				<f:selectItem itemLabel="16:00" itemValue="16"/>
-				<f:selectItem itemLabel="17:00" itemValue="17"/>
-				<f:selectItem itemLabel="18:00" itemValue="18"/>
-			</p:selectOneMenu>
-			<p:commandButton update="panel1 :form2:panel2" value="Insertar" icon="ui-icon-check" action="#{horaBean.CrearHora}"></p:commandButton>
-		</p:panelGrid>
+		
 	</p:panel>
 </h:form>
 <hr />
 <h:form id="form2">
-	<p:panel id="panel2" header="Horas Laboradas">
-		<p:dataTable paginator="true" rows="5"  value="#{horaBean.listHora}" var="lu">
-			<p:column headerText="TRABAJADOR">
-			
-			<h:outputText value="#{lu.trabajadore.nombre}"></h:outputText>
-			
-			
-			<h:outputText value="#{lu.trabajadore.apellido}"></h:outputText>
-			
+	<p:panel id="panel2" header="Usuarios Registrados">
+		<p:dataTable paginator="true" rows="5"  value="#{usuarioBean.listUsuarios}" var="lu">
+			<p:column headerText="NICK">
+				<h:outputText value="#{lu.nick}"></h:outputText>
 			</p:column>
-			<p:column headerText="FECHA">
-			<h:outputText value="#{lu.fecha}"><f:convertDateTime pattern="dd/MM/yyyy" /></h:outputText>
+			<p:column headerText="NOMBRES">
+				<h:outputText value="#{lu.nombres}"></h:outputText>
 			</p:column>
-			<p:column headerText="HORA INICIO">
-			<h:outputText value="#{lu.hi}:00"></h:outputText>
+			<p:column headerText="CONTRASEÑA ">
+			<h:outputText value="#{lu.pass}"></h:outputText>
 			</p:column>
-			<p:column headerText="HORA ALMUERZO">
-			<h:outputText value="#{lu.hfa}:00"></h:outputText>
-			</p:column>
-			<p:column headerText="HORA REGRESO">
-			<h:outputText value="#{lu.hia}:00"></h:outputText>
-			</p:column>
-			<p:column headerText="HORA FIN">
-			<h:outputText value="#{lu.hf}:00"></h:outputText>
-			</p:column>
-			<p:column headerText="HORAS TOTAL LABORADAS">
-			<h:outputText value="#{lu.horas}:00"></h:outputText>
+			<p:column headerText="ROL ">
+			<h:outputText value="#{lu}"></h:outputText>
 			</p:column>
 			<p:column headerText="Administrar">
-			<p:commandButton update=":form2:panel2" icon="ui-icon-trash" action="#{horaBean.EliminarHora(lu)}"></p:commandButton>
-			<p:commandButton icon="ui-icon-pencil" action="#{horaBean.cargarHoras(lu)}"></p:commandButton>
+			<p:commandButton update=":form2:panel2" icon="ui-icon-trash" action="#{usuarioBean.eliminarUsuario(lu)}"></p:commandButton>
+			<p:commandButton icon="ui-icon-pencil" action="#{usuarioBean.cargarUsuario(lu)}"></p:commandButton>
 			</p:column>
 		</p:dataTable>			
 	</p:panel>

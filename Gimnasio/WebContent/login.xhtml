@@ -7,17 +7,17 @@
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <h:outputStylesheet library="css" name="style.css" />
-<title>Sistema de ventas "Carlex"</title>
+<title>Sistema de Gimnasios</title>
 </h:head>
 <h:body>
 <h:form style="width: 426px; ">
 	<p:panel id="panel1" header="Ingreso al Sistema">
 		<h:panelGrid columns="3">
-			<h:outputText value="Nombre"></h:outputText>
-			<p:inputText required="true" id="nombre" requiredMessage="Requerido" value="#{usuarioBean.nombre}"></p:inputText>
-			<p:message for="nombre"></p:message>
+			<h:outputText value="Nick"></h:outputText>
+			<p:inputText required="true" id="nick" requiredMessage="Requerido" value="#{usuarioBean.nick}"></p:inputText>
+			<p:message for="nick"></p:message>
 			<h:outputText value="Contraseña"></h:outputText>
-			<p:inputText type="password" required="true" id="pass" requiredMessage="Requerido" value="#{usuarioBean.contrasena}"></p:inputText>
+			<p:inputText type="password" required="true" id="pass" requiredMessage="Requerido" value="#{usuarioBean.pass}"></p:inputText>
 			<p:message for="pass"></p:message>
 			<p:commandButton update="panel1" value="Ingresar" action="#{usuarioBean.accesoUsuario}"></p:commandButton>
 		</h:panelGrid>

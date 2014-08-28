@@ -16,7 +16,7 @@ public class Meses implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MES_IDMES_GENERATOR", sequenceName="SEC_MES")
+	@SequenceGenerator(name="MES_IDMES_GENERATOR", sequenceName="SEC_MES",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MES_IDMES_GENERATOR")
 	@Column(name="id_mes")
 	private Long idMes;

@@ -17,7 +17,7 @@ public class Tipousr implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIPOUSR_IDTIPOUSR_GENERATOR", sequenceName="SEC_TIPOUSR")
+	@SequenceGenerator(name="TIPOUSR_IDTIPOUSR_GENERATOR", sequenceName="SEC_TIPOUSR",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIPOUSR_IDTIPOUSR_GENERATOR")
 	@Column(name="id_tipousr")
 	private Long idTipousr;
