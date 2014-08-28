@@ -1,7 +1,5 @@
 package model.dao.manager;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,7 +15,6 @@ public class ManagerGym {
 	private static EntityManager em;
 	private static Tipousr tipo;
 
-	
 	
 public ManagerGym() {
 		if(emf==null)
@@ -108,6 +105,21 @@ public ManagerGym() {
 				 return u;
 			 }
 			 	
+			 	//metodo para buscar por nick
+				 public Usuario findByNick(String nick){
+						List<Usuario> listado;
+						Usuario u=null;
+						listado =findAllUsuarios();
+						em.getTransaction().begin();
+						for (Usuario us:listado){
+							if (us.getNick().equals(nick)){
+								u=us;
+							}
+						}
+						em.getTransaction().commit();
+						return u;
+					}
+			 	
 			 //metodo eliminar usuario
 			 	public void eliminarUsuario(Long idUsr){
 			 		//buscamos usuario a ser eliminado
@@ -123,7 +135,7 @@ public ManagerGym() {
 				}
 			 	
 			 	//metodo para actualizar usuario
-			 	 public void actualizarHora(Long idUsr,String nick,String nombres,String pass){
+			 	 public void actualizarUsuario(Long idUsr,String nick,String nombres,String pass){
 					 //buscamos el objeto que debe ser actualizado:
 					 Usuario u = findbyIdUsuario(idUsr);
 					 em.getTransaction().begin();

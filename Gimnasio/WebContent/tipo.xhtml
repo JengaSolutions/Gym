@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet library="css" name="style.css" />
+<title>Registro de Trabajadores</title>
+</h:head>
+<body>
+<h:graphicImage  value="/resources/images/t1.png"></h:graphicImage>
+<h:form id="form" >
+		<p:commandButton update="form" value="Asignar Tiempos" icon="ui-icon-person" action="#{trabajadorBean.irHoras}"></p:commandButton>
+</h:form>
+<hr />
+	<h:form id="form1" style="width: 933px; ">
+		<p:panel id="panel1"  header="Registro de Trabajadores">
+		<p:panelGrid columns="3" >
+			<h:outputText value="NOMBRE*"/>
+			<p:inputText required="true" id="nombre" value="#{trabajadorBean.nombre}" requiredMessage=" Nombre Requerido"></p:inputText>
+			<p:message for="nombre"></p:message>
+			<h:outputText value="APELLIDO*"/>
+			<p:inputText required="true" id="apellido" value="#{trabajadorBean.apellido}" requiredMessage="Apellido Requerido"></p:inputText>
+			<p:message for="apellido"></p:message>
+			<h:outputText value="DIRECCION"/>
+			<p:inputText id="direccion" value="#{trabajadorBean.direccion}"></p:inputText>
+			<p:message for="direccion"></p:message>
+			<h:outputText value="TELEFONO"/>
+			<p:inputText id="telefono" value="#{trabajadorBean.telefono}"></p:inputText>
+			<p:message for="telefono"></p:message>
+			<p:commandButton update="panel1 :form2:panel2" value="Insertar" icon="ui-icon-check" action="#{trabajadorBean.actionCrearTrabajador}"></p:commandButton>
+		</p:panelGrid>
+	</p:panel>
+</h:form>
+<hr />
+<h:form id="form2">
+	<p:panel id="panel2" header="Trabajadores Existentes">
+		<p:dataTable paginator="true" rows="5"  value="#{trabajadorBean.listTrabajadores}" var="lu">
+			<p:column headerText="Nombre">
+			<h:outputText value="#{lu.nombre}"></h:outputText>
+			</p:column>
+			<p:column headerText="Apellido">
+			<h:outputText value="#{lu.apellido}"></h:outputText>
+			</p:column>
+			<p:column headerText="Direccion">
+			<h:outputText value="#{lu.direccion}"></h:outputText>
+			</p:column>
+			<p:column headerText="Telefono">
+			<h:outputText value="#{lu.telefono}"></h:outputText>
+			</p:column>
+			<p:column width="center" headerText="Administrar">
+			<p:commandButton update=":form2:panel2" icon="ui-icon-trash" action="#{trabajadorBean.EliminarTrabajador(lu)}"></p:commandButton>
+			<p:commandButton icon="ui-icon-pencil" action="#{trabajadorBean.cargarTrabajador(lu)}"></p:commandButton>
+			</p:column>
+		</p:dataTable>			
+	</p:panel>
+</h:form>
+</body>
+</html>

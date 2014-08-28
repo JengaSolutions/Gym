@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet library="css" name="style.css" />
+<title>Sistema de ventas "Carlex"</title>
+</h:head>
+<h:body>
+<h:form style="width: 426px; ">
+	<p:panel id="panel1" header="Ingreso al Sistema">
+		<h:panelGrid columns="3">
+			<h:outputText value="Nombre"></h:outputText>
+			<p:inputText required="true" id="nombre" requiredMessage="Requerido" value="#{usuarioBean.nombre}"></p:inputText>
+			<p:message for="nombre"></p:message>
+			<h:outputText value="Contraseña"></h:outputText>
+			<p:inputText type="password" required="true" id="pass" requiredMessage="Requerido" value="#{usuarioBean.contrasena}"></p:inputText>
+			<p:message for="pass"></p:message>
+			<p:commandButton update="panel1" value="Ingresar" action="#{usuarioBean.accesoUsuario}"></p:commandButton>
+		</h:panelGrid>
+	</p:panel>
+</h:form>
+</h:body>
+</html>
