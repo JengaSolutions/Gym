@@ -7,16 +7,21 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import model.dao.entities.Registro;
 import model.dao.entities.Usuario;
 import model.dao.entities.Tipousr;
 
 public class ManagerGym {
+	private ManagerDAO managerDAO;
+	
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static Tipousr tipo;
 
 	
 public ManagerGym() {
+		managerDAO = new ManagerDAO();
+		
 		if(emf==null)
 			emf=Persistence.createEntityManagerFactory("Gimnasio");
 		if(em==null)
@@ -145,6 +150,18 @@ public ManagerGym() {
 					 u.setPass(pass);
 					 em.merge(u);
 					 em.getTransaction().commit();
-				 }		 	
-		 	
+				 }	
+			 	 
+/*-------------------------------------------------------------------------------------------------------*/
+		
+//Registros
+	@SuppressWarnings("unchecked")
+	public List<Registro> findAllRegistros(){
+		return managerDAO.findAll(Registro.class);
+	}
+	
+	public Registro findByIDRegistro(Long idReg) throws Exception{
+		return (Registro) managerDAO.findById(Registro.class, idReg);
+	}
+			 	 
 }
