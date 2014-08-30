@@ -1,5 +1,7 @@
 package model.dao.manager;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import model.dao.entities.Meses;
 import model.dao.entities.Registro;
 import model.dao.entities.Usuario;
 import model.dao.entities.Tipousr;
@@ -163,5 +166,48 @@ public ManagerGym() {
 	public Registro findByIDRegistro(Long idReg) throws Exception{
 		return (Registro) managerDAO.findById(Registro.class, idReg);
 	}
-			 	 
+	
+	public void insertarRegistro(String nombres, String apellidos, BigDecimal altura, String correo, Integer edad, BigDecimal peso, String sexo, String telefono) throws Exception{
+		Registro r = new Registro();
+		r.setNombres(nombres);r.setApellidos(apellidos);r.setAltura(altura);
+		r.setCorreo(correo);r.setEdad(edad);r.setPeso(peso);r.setSexo(sexo);r.setTelefono(telefono);
+		managerDAO.insertar(r);
+	}
+	
+	public void modificarRegistro(Long idReg, String nombres, String apellidos, BigDecimal altura, String correo, Integer edad, BigDecimal peso, String sexo, String telefono){
+		try {
+			Registro r = findByIDRegistro(idReg);
+			r.setNombres(nombres);r.setApellidos(apellidos);r.setAltura(altura);
+			r.setCorreo(correo);r.setEdad(edad);r.setPeso(peso);r.setSexo(sexo);r.setTelefono(telefono);
+			managerDAO.actualizar(r);
+		} catch (Exception e) {
+			System.out.println("Error mod cliente");
+		}
+	}
+	
+//Meses
+	@SuppressWarnings("unchecked")
+	public List<Meses> findAllMeses(){
+		return managerDAO.findAll(Meses.class);
+	}
+	
+	public Meses findByIDMeses(Long idMes) throws Exception{
+		return (Meses) managerDAO.findById(Meses.class, idMes);
+	}
+	
+	public void insertarMeses(Date fechaI, Date fechaF,Registro registro) throws Exception{
+		Meses m = new Meses();
+		m.setFechaI(fechaI);m.setFechaF(fechaF);m.setRegistro(registro);
+		managerDAO.insertar(m);
+	}
+	
+	public void modificarMeses(Long idMes,Date fechaI, Date fechaF,Registro registro){
+		try {
+			Meses m = findByIDMeses(idMes);
+			m.setFechaI(fechaI);m.setFechaF(fechaF);m.setRegistro(registro);
+			managerDAO.actualizar(m);
+		} catch (Exception e) {
+			System.out.println("Error mod mes consumo");
+		}
+	}
 }
