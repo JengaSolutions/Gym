@@ -25,7 +25,7 @@ public class ManagerDAO {
 	public ManagerDAO() {
 		mostrarLog("constructor","ManagerDAO Creado");
 		if (factory == null) {
-			factory = Persistence.createEntityManagerFactory("LibrosCVI");
+			factory = Persistence.createEntityManagerFactory("Gimnasio");
 			mostrarLog("constructor","Factory creado");
 		}
 		if (em == null) {

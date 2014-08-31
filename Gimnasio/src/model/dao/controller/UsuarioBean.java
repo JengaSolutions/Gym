@@ -175,5 +175,8 @@ public List<Usuario> getListUsuarios(){
 						
 					return dir;
 		}
+				
+	//metodo para mostrar el tipo de usuario
+				
 }
 
