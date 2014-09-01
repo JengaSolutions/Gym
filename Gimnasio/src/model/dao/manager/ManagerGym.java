@@ -66,6 +66,8 @@ public ManagerGym() {
 			 return t;
 		 }
 		 	
+		 
+		 	
 		 //metodo eliminar tipo
 		 	public void eliminarTipo(Long idTipoUsr){
 		 		//buscamos el tipo a ser eliminado
@@ -112,6 +114,7 @@ public ManagerGym() {
 				 em.getTransaction().commit();
 				 return u;
 			 }
+				 
 			 	
 			 	//metodo para buscar por nick
 				 public Usuario findByNick(String nick){

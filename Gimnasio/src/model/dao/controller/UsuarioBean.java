@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
 
+
 import model.dao.entities.Tipousr;
 import model.dao.entities.Usuario;
 import model.dao.manager.ManagerGym;
@@ -26,6 +27,8 @@ private String nombres;
 
 private String pass;
 
+private Tipousr tipousr;
+
 static String usr;
 
 static String cont;
@@ -36,6 +39,14 @@ public UsuarioBean(){
 
 public Long getIdUsr() {
 	return idUsr;
+}
+
+public Tipousr getTipousr() {
+	return tipousr;
+}
+
+public void setTipousr(Tipousr tipousr) {
+	this.tipousr = tipousr;
 }
 
 public void setIdUsr(Long idUsr) {
@@ -140,11 +151,6 @@ public List<Usuario> getListUsuarios(){
 			return "usuario";
 		}
 		
-	// metodo de mostrar el tipo de usuario
-		public String mostrarTipo(Tipousr t){
-			manager.findbyIdTipo(t.getIdTipousr());
-			return "";
-		}
 		
 		//cerrar sesion
 				public String CerrarUsuario(){

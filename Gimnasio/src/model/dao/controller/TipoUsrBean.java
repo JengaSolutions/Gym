@@ -68,6 +68,7 @@ public List<Tipousr> getListTipos(){
 		manager.eliminarTipo(tipousr.getIdTipousr());
 		return "";
 	}
+
 	
 //redireccion a Usuario
 	public String irUsuario(){
